@@ -1,14 +1,13 @@
 require 'Vehicles/VehicleDistributions'
 
-print(type(VehicleDistributions))
-
+local chanceDivisor = 2 -- the higher the number the less likely the items will be distributed
 local function insert(locations, itemTable)
     for l = 1, #locations, 1 do
         for i = 1, #itemTable, 2 do
             if(not pcall(
                 function ()
                     table.insert(VehicleDistributions[locations[l]].items, itemTable[i])
-                    table.insert(VehicleDistributions[locations[l]].items, itemTable[i + 1])
+                    table.insert(VehicleDistributions[locations[l]].items, itemTable[i + 1]/chanceDivisor)
                 end
             )) then
                 print("Error inserting location: " .. locations[l] .. " item: " .. itemTable[i])

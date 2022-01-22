@@ -1,14 +1,13 @@
 require 'Items/ProceduralDistributions'
 
-print(type(ProceduralDistributions))
-
+local chanceDivisor = 10 -- the higher the number the less likely the items will be distributed
 local function insert(locations, itemTable)
     for l = 1, #locations, 1 do
         for i = 1, #itemTable, 2 do
             if(not pcall(
                 function ()
                     table.insert(ProceduralDistributions.list[locations[l]].items, itemTable[i])
-                    table.insert(ProceduralDistributions.list[locations[l]].items, itemTable[i + 1]/2)
+                    table.insert(ProceduralDistributions.list[locations[l]].items, itemTable[i + 1]/chanceDivisor)
                 end
             )) then
                 print("Error inserting location: " .. locations[l] .. " item: " .. itemTable[i])

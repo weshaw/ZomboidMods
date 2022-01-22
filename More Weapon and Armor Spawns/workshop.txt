@@ -1,0 +1,8 @@
+version=1
+title=More Weapon and Ammo Spawns
+description=This mod will add a bit more weapon and ammo spawns.
+description=
+description=More spawns for containers, cars, and additional locations for guns and ammo to spawn in houses. 
+description=Zombies have a greater chance to spawn with weapons in/on them.
+tags=Build 41, Items, Weapons, Ammo
+visibility=public

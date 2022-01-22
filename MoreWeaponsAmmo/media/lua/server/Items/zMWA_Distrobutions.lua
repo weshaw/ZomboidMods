@@ -1,14 +1,23 @@
 require 'Items/ProceduralDistributions'
 
+print(type(ProceduralDistributions))
 
-local function insert(locations, itemTable) do
+local function insert(locations, itemTable)
     for l = 1, #locations, 1 do
         for i = 1, #itemTable, 2 do
-            table.insert(ProceduralDistributions.list[locations[l]].items, itemTable[i])
-            table.insert(ProceduralDistributions.list[location[l]].items, itemTable[i + 1])
+            if(not pcall(
+                function ()
+                    table.insert(ProceduralDistributions.list[locations[l]].items, itemTable[i])
+                    table.insert(ProceduralDistributions.list[locations[l]].items, itemTable[i + 1]/2)
+                end
+            )) then
+                print("Error inserting location: " .. locations[l] .. " item: " .. itemTable[i])
+            end
         end
     end
 end
+
+
 
 insert({"WardrobeMan", "WardrobeManClassy", "WardrobeRedneck","WardrobeWoman","WardrobeWomanClassy", "BedroomDresser", "BedroomSideTable","ClosetShelfGeneric"}, {
     "Base.308Box", 2,
@@ -16,7 +25,7 @@ insert({"WardrobeMan", "WardrobeManClassy", "WardrobeRedneck","WardrobeWoman","W
     "Base.ShotgunShellsBox", 5, 
     "Base.Bullets9mmBox", 10, 
     "Base.Bullets44Box", 8, 
-});
+})
 
 insert({"WardrobeMan", "WardrobeManClassy", "WardrobeRedneck","WardrobeWoman","WardrobeWomanClassy"}, {
     "Base.Shotgun", 3, 
@@ -25,13 +34,13 @@ insert({"WardrobeMan", "WardrobeManClassy", "WardrobeRedneck","WardrobeWoman","W
     "Base.RifleCase3", 1, 
     "Base.RifleCase2", 1, 
     "Base.RevolverCase3", 1, 
-});
+})
 
 insert({"BedroomDresser", "BedroomSideTable"}, {
     "Base.PistolCase1", 2, 
     "Base.PistolCase2", 1, 
     "Base.PistolCase3", 1, 
-});
+})
 insert({"GarageTools", "GarageFirearms","ClosetShelfGeneric"}, {
     "Base.ShotgunCase1", 4, 
     "Base.ShotgunCase2", 3, 
@@ -46,7 +55,7 @@ insert({"GarageTools", "GarageFirearms","ClosetShelfGeneric"}, {
     "Base.RevolverCase3", 2, 
     "Machete", 1,
 
-});
+})
 
 insert({"HuntingLockers","PawnShopGunsSpecial"}, {
     "Base.PistolCase1", 8,
@@ -172,6 +181,7 @@ insert({"PoliceStorageGuns","SecurityLockers","FirearmWeapons","PawnShopGuns"}, 
     "Base.Nightstick", 2,
     "Base.Revolver_Short", 10,
 })
+
 insert({"PoliceStorageGuns","SecurityLockers","FirearmWeapons","PawnShopGuns"}, {
     "Base.556Clip", 10,
     "Base.AssaultRifle", 2,

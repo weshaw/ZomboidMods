@@ -1,4 +1,5 @@
 version=1
+id=2728348191
 title=More Weapon and Ammo Spawns
 description=This mod will add a bit more weapon and ammo spawns.
 description=
